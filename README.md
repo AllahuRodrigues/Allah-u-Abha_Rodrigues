@@ -1,36 +1,148 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Allah-u-Abha Rodrigues - Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website showcasing my work as a Machine Learning Engineer and Software Developer. Built with Next.js 14, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
+
+- **Modern Design**: Clean, professional interface with smooth animations
+- **Responsive**: Optimized for desktop, tablet, and mobile devices
+- **Interactive Elements**: Framer Motion animations and interactive components
+- **Performance Optimized**: Built with Next.js for optimal loading speeds
+- **SEO Ready**: Meta tags, structured data, and accessibility features
+- **Type Safe**: Written in TypeScript for better development experience
+
+## 🛠 Tech Stack
+
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **Icons**: Lucide React
+- **Build Tool**: Turbopack (Next.js)
+- **Deployment**: Vercel
+
+## 📋 Sections
+
+1. **Hero**: Introduction with typewriter effect and current focus
+2. **About**: Skills, stats, and community involvement
+3. **Experience**: Professional history and education
+4. **Portfolio**: Featured projects with live demos and source code
+5. **Internet Presence**: Blog posts and documentation
+6. **Contact**: Contact form with embedded map
+
+## 🏃‍♂️ Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm (recommended) or npm
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clone the repository
+git clone https://github.com/allahu-rodrigues/portfolio.git
+
+# Navigate to project directory
+cd portfolio
+
+# Install dependencies
+pnpm install
+
+# Start development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Build the application
+pnpm build
 
-## Learn More
+# Start production server
+pnpm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Customization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Personal Information
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Update the profile information in `lib/constants.ts`:
 
-## Deploy on Vercel
+```typescript
+export const profile = {
+  name: "Your Name",
+  email: "your.email@example.com",
+  // ... other details
+};
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Styling
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The design system uses CSS custom properties defined in `app/globals.css`. Key colors:
+
+- `--accent`: Primary accent color (purple)
+- `--background`: Background color
+- `--foreground`: Text color
+
+### Content
+
+- **Projects**: Update the projects array in `components/projects/index.tsx`
+- **Blog Posts**: Modify `profile.blogPosts` in `lib/constants.ts`
+- **Experience**: Update `profile.experience` and `profile.education`
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── app/                  # Next.js app directory
+│   ├── layout.tsx       # Root layout
+│   ├── page.tsx         # Home page
+│   └── globals.css      # Global styles
+├── components/          # React components
+│   ├── hero/           # Hero section
+│   ├── about/          # About section
+│   ├── experience/     # Experience section
+│   ├── projects/       # Projects section
+│   ├── contact/        # Contact section
+│   └── navigation/     # Navigation
+├── lib/                # Utilities and constants
+│   ├── constants.ts    # Site data and configuration
+│   └── utils.ts        # Helper functions
+└── public/             # Static assets
+```
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Deploy automatically
+
+### Other Platforms
+
+The site can be deployed to any platform that supports Next.js:
+
+- Netlify
+- AWS Amplify
+- Railway
+- DigitalOcean App Platform
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/allahu-rodrigues/portfolio/issues).
+
+## 📧 Contact
+
+Allah-u-Abha Rodrigues - [allahu.rodrigues@gmail.com](mailto:allahu.rodrigues@gmail.com)
+
+Project Link: [https://github.com/allahu-rodrigues/portfolio](https://github.com/allahu-rodrigues/portfolio)
+
+---
+
+Made with ❤️ and TypeScript

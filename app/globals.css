@@ -2,22 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
+    --muted: #666666;
+    --accent: 120 119 198;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    perspective: 1000px;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: radial-gradient(circle at 50% 50%, 
+      rgba(17, 17, 17, 1) 0%, 
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  ::selection {
+    @apply bg-accent text-foreground opacity-30;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .heading {
+    @apply text-3xl sm:text-4xl font-bold;
+  }
+
+  .subheading {
+    @apply text-lg text-gray-400;
+  }
+
+  .link {
+    @apply text-accent hover:text-accent/80 transition-colors;
+  }
+
+  .button {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300;
+  }
+
+  .button-primary {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90;
+  }
+
+  .button-secondary {
+    @apply bg-white/10 text-white hover:bg-white/20;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .gradient-border {
+    @apply bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 p-[1px] rounded-lg;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-lg bg-white/5 border border-white/10;
+  }
+  
+  .dot-pattern {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+
+  .tilt-card {
+    @apply transition-transform duration-200 ease-out;
+    transform-style: preserve-3d;
+  }
+
+  .parallax-layer {
+    @apply absolute inset-0;
+    transform: translateZ(var(--depth)) scale(var(--scale));
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
 }
 
 @layer utilities {
