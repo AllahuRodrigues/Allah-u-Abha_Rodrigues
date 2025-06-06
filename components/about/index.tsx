@@ -185,7 +185,7 @@ export const AboutSection = () => {
                   <p className="text-accent-400 mb-2">{edu.degree} in {edu.field}</p>
                   <p className="text-sm text-neutral-400 mb-3">{edu.period}</p>
                   {'gpa' in edu && (
-                    <p className="text-sm text-neutral-300 mb-3">GPA: {edu.gpa}</p>
+                    <p className="text-sm text-neutral-300 mb-3">GPA: {(edu.gpa as number).toFixed(2)}</p>
                   )}
                   {'activities' in edu && edu.activities && (
                     <div className="flex flex-wrap gap-2">
