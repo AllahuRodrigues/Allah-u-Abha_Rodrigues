@@ -14,14 +14,14 @@ const Card = ({ children, className = "" }: { children: React.ReactNode; classNa
 
 const Input = ({ className = "", ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
   <input
-    className={`flex h-12 w-full rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 ${className}`}
+    className={`flex h-12 w-full rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all duration-200 ${className}`}
     {...props}
   />
 );
 
 const Textarea = ({ className = "", ...props }: React.TextareaHTMLAttributes<HTMLTextAreaElement>) => (
   <textarea
-    className={`flex min-h-[120px] w-full rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none ${className}`}
+    className={`flex min-h-[120px] w-full rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all duration-200 resize-none ${className}`}
     {...props}
   />
 );
@@ -38,10 +38,10 @@ const Button = ({
   variant?: "default" | "outline";
   disabled?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  const baseClasses = "inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseClasses = "inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed";
   
   const variants = {
-    default: "bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 shadow-lg hover:shadow-xl hover:shadow-purple-500/25",
+    default: "bg-white text-black hover:bg-gray-200 shadow-lg hover:shadow-xl hover:shadow-white/25",
     outline: "border border-white/20 text-white hover:bg-white/10 backdrop-blur-sm"
   };
 
@@ -150,6 +150,20 @@ export default function ContactSection() {
     }
   ];
 
+  const workDetails = [
+    {
+      label: 'Work Authorization',
+      items: [
+        'Portugal (EU Area)',
+        'United States'
+      ]
+    },
+    {
+      label: 'Languages',
+      items: profile.languages
+    }
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -172,12 +186,12 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-24 relative overflow-hidden bg-gradient-to-b from-background via-black to-black">
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5" />
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-3xl"
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -190,7 +204,7 @@ export default function ContactSection() {
           }}
         />
         <motion.div
-          className="absolute top-3/4 right-1/4 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl"
+          className="absolute top-3/4 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-2xl"
           animate={{
             x: [0, -80, 0],
             y: [0, 60, 0],
@@ -219,16 +233,16 @@ export default function ContactSection() {
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6"
             >
-              <Mail className="w-4 h-4 text-purple-400" />
-              <span className="text-purple-400 text-sm font-medium">Get In Touch</span>
+              <Mail className="w-4 h-4 text-white" />
+              <span className="text-white text-sm font-medium">Get In Touch</span>
             </motion.div>
             
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Let's Build Something
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-300">
                 Amazing Together
               </span>
             </h2>
@@ -345,8 +359,8 @@ export default function ContactSection() {
                     const IconComponent = item.icon;
                     const content = (
                       <div className="flex items-start gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10">
-                        <div className="p-2 bg-purple-500/20 rounded-lg shrink-0">
-                          <IconComponent className="w-5 h-5 text-purple-400" />
+                        <div className="p-2 bg-white/20 rounded-lg shrink-0">
+                          <IconComponent className="w-5 h-5 text-white" />
                         </div>
                         <div>
                           <h4 className="text-white font-medium mb-1">{item.label}</h4>
@@ -390,6 +404,26 @@ export default function ContactSection() {
                       feel free to reach out directly via email.
                     </p>
                   </div>
+                </div>
+              </Card>
+
+              {/* Work Authorization & Languages */}
+              <Card className="p-6">
+                <h4 className="text-white font-medium mb-4">Work Authorization & Languages</h4>
+                <div className="space-y-4">
+                  {workDetails.map((detail, index) => (
+                    <div key={index}>
+                      <h5 className="text-gray-300 text-sm font-medium mb-2">{detail.label}</h5>
+                      <div className="space-y-1">
+                        {detail.items.map((item, itemIndex) => (
+                          <div key={itemIndex} className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-white rounded-full" />
+                            <span className="text-gray-400 text-sm">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </Card>
 

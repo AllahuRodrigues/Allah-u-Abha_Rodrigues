@@ -1,322 +1,291 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Clock, Users, Target, Heart, BookOpen, Code, TrendingUp } from 'lucide-react';
+import { Metadata } from 'next';
 import Link from 'next/link';
+import { ArrowLeft, Calendar, Clock, Users, Target, Heart, BookOpen, Code, TrendingUp } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Mentoring the Next Generation: Teaching Code with Heart | Allah-u-Abha Rodrigues',
+  description: 'My experience mentoring 15+ students at Curious Cardinals and how project-based learning transforms coding education.',
+};
 
 export default function MentoringNextGenerationPage() {
-  const articleData = {
-    title: "Mentoring the Next Generation: Teaching Code with Heart",
-    subtitle: "How project-based learning and personalized mentorship transformed 15+ students' coding journey",
-    date: "February 20, 2025",
-    readingTime: "6 min read",
-    author: "Allah-u-Abha Rodrigues",
-    tags: ["Education", "Mentoring", "Programming", "Teaching", "Impact"],
-    metrics: {
-      students: "15+",
-      improvement: "85%",
-      completion: "95%"
-    }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-black">
-      <div className="container py-12">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-4xl mx-auto"
-        >
-          {/* Back Navigation */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <Link
-              href="/#experience"
-              className="inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 transition-colors"
+    <div className="min-h-screen bg-black text-white">
+      {/* Grid Background */}
+      <div className="fixed inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+      
+      <div className="relative z-10">
+        {/* Navigation */}
+        <nav className="border-b border-white/10 backdrop-blur-xl bg-black/50">
+          <div className="container mx-auto px-6 py-4">
+            <Link 
+              href="/#internet-presence" 
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to Experience
+              Back to Portfolio
             </Link>
-          </motion.div>
+          </div>
+        </nav>
 
-          {/* Article Header */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                {articleData.title}
-              </h1>
-              <p className="text-xl text-neutral-300 mb-6 leading-relaxed">
-                {articleData.subtitle}
+        {/* Article Header */}
+        <header className="container mx-auto px-6 py-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-wrap gap-2 mb-6">
+              {['Education', 'Mentoring', 'Programming', 'Teaching'].map((tag) => (
+                <span 
+                  key={tag}
+                  className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+              Mentoring the Next Generation: Teaching Code with Heart
+            </h1>
+            
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              My experience mentoring 15+ students at Curious Cardinals and how project-based learning 
+              transforms coding education.
+            </p>
+            
+            <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                February 28, 2025
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                8 min read
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Article Content */}
+        <article className="container mx-auto px-6 pb-16">
+          <div className="max-w-4xl mx-auto prose prose-invert prose-lg">
+            
+            {/* Introduction */}
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-12">
+              <h2 className="text-2xl font-bold mb-4 text-white flex items-center gap-3">
+                <Heart className="w-6 h-6 text-red-400" />
+                Why I Started Mentoring
+              </h2>
+              <p className="text-gray-300 leading-relaxed">
+                When I first started learning to code, I remember the overwhelming feeling of not knowing where to begin. 
+                The vast landscape of programming languages, frameworks, and concepts felt insurmountable. I was fortunate 
+                to have mentors who guided me through those early struggles, and I knew I wanted to pay that forward.
               </p>
-              
-              {/* Article Meta */}
-              <div className="flex flex-wrap items-center gap-6 text-sm text-neutral-400 mb-6">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{articleData.date}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>{articleData.readingTime}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span>By {articleData.author}</span>
-                </div>
-              </div>
-
-              {/* Key Metrics */}
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                {Object.entries(articleData.metrics).map(([key, value]) => (
-                  <div key={key} className="text-center p-4 bg-white/5 rounded-lg border border-white/10">
-                    <div className="text-2xl font-bold text-purple-400 mb-1">{value}</div>
-                    <div className="text-xs text-neutral-400 capitalize">
-                      {key === 'students' ? 'Students Mentored' : 
-                       key === 'improvement' ? 'Skill Improvement' : 
-                       'Project Completion'}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {articleData.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-sm bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
-          </motion.div>
 
-          {/* Article Content */}
-          <motion.div variants={itemVariants} className="prose prose-invert prose-lg max-w-none">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 space-y-8">
+            {/* Key Metrics */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-white flex items-center gap-3">
+                <TrendingUp className="w-7 h-7 text-green-400" />
+                Impact by the Numbers
+              </h2>
               
-              <section>
-                <h2 className="text-3xl font-bold text-white mb-4">Why I Started Mentoring</h2>
-                <p className="text-neutral-300 leading-relaxed mb-4">
-                  When I first started learning to code, I remember the overwhelming feeling of not knowing where to begin. 
-                  The vast landscape of programming languages, frameworks, and concepts felt insurmountable. I was fortunate 
-                  to have mentors who guided me through those early struggles, and I knew I wanted to pay that forward.
-                </p>
-                <p className="text-neutral-300 leading-relaxed">
-                  Joining Curious Cardinals as a Software & Machine Learning Engineer Mentor gave me the perfect opportunity 
-                  to help middle and high school students navigate their own coding journeys. But I quickly realized that 
-                  traditional teaching methods wouldn't work for this generation of digital natives.
-                </p>
-              </section>
-
-              <section>
-                <h2 className="text-3xl font-bold text-white mb-4">The Project-Based Learning Revolution</h2>
-                <p className="text-neutral-300 leading-relaxed mb-4">
-                  Instead of starting with syntax and theory, I decided to flip the script. Every student began with a 
-                  project they were genuinely excited about. Whether it was building a game in Scratch, creating an 
-                  Arduino-powered robot, or developing a simple web app, the projects came first.
-                </p>
-                
-                <div className="grid gap-4 my-6">
-                  {[
-                    {
-                      icon: Code,
-                      title: "Game Development in Scratch",
-                      description: "Students created interactive stories and games, learning programming fundamentals through visual coding"
-                    },
-                    {
-                      icon: Target,
-                      title: "Arduino IoT Projects", 
-                      description: "Building motion-sensor systems and smart home prototypes, bridging hardware and software"
-                    },
-                    {
-                      icon: BookOpen,
-                      title: "Web Development Basics",
-                      description: "Creating personal portfolio websites using HTML, CSS, and JavaScript"
-                    },
-                    {
-                      icon: TrendingUp,
-                      title: "Data Science Exploration",
-                      description: "Analyzing real-world datasets and creating visualizations using Python"
-                    }
-                  ].map((project, index) => {
-                    const IconComponent = project.icon;
-                    return (
-                      <div key={index} className="flex items-start gap-4 p-4 bg-white/5 rounded-lg border border-white/10">
-                        <div className="p-2 bg-purple-500/20 rounded-lg shrink-0">
-                          <IconComponent className="w-5 h-5 text-purple-400" />
-                        </div>
-                        <div>
-                          <h4 className="text-white font-semibold mb-2">{project.title}</h4>
-                          <p className="text-neutral-300 text-sm leading-relaxed">{project.description}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center">
+                  <div className="text-3xl font-bold text-green-400 mb-2">15+</div>
+                  <div className="text-gray-300">Students Mentored</div>
+                  <div className="text-xs text-gray-500 mt-1">Middle & High School</div>
                 </div>
-              </section>
-
-              <section>
-                <h2 className="text-3xl font-bold text-white mb-4">The Power of Personalization</h2>
-                <p className="text-neutral-300 leading-relaxed mb-4">
-                  One of the most important lessons I learned was that every student has a unique learning style and 
-                  interest area. Some students thrived with visual programming environments like Scratch, while others 
-                  were drawn to the tangible nature of hardware projects with Arduino.
-                </p>
-
-                <h3 className="text-xl font-semibold text-white mb-3">Adaptive Teaching Strategies</h3>
-                <ul className="list-disc list-inside text-neutral-300 space-y-2 ml-4 mb-4">
-                  <li><strong>Visual Learners:</strong> Used flowcharts and diagrams to explain algorithmic thinking</li>
-                  <li><strong>Kinesthetic Learners:</strong> Emphasized hands-on projects with immediate feedback</li>
-                  <li><strong>Analytical Minds:</strong> Introduced mathematical concepts through coding challenges</li>
-                  <li><strong>Creative Spirits:</strong> Focused on artistic coding and design-oriented projects</li>
-                </ul>
-
-                <p className="text-neutral-300 leading-relaxed">
-                  This personalized approach led to an 85% improvement in coding proficiency across all students, 
-                  measured through project complexity and independent problem-solving ability.
-                </p>
-              </section>
-
-              <section>
-                <h2 className="text-3xl font-bold text-white mb-4">Building Confidence Through Success</h2>
-                <p className="text-neutral-300 leading-relaxed mb-4">
-                  One of the biggest barriers to learning programming is the fear of failure. Students often get discouraged 
-                  when their code doesn't work the first time, viewing errors as failures rather than learning opportunities.
-                </p>
-
-                <h3 className="text-xl font-semibold text-white mb-3">The "Celebration of Bugs" Philosophy</h3>
-                <p className="text-neutral-300 leading-relaxed mb-4">
-                  I introduced a radical concept: celebrating bugs and errors as learning milestones. Every error message 
-                  became a puzzle to solve together, and every bug fix was a small victory worth celebrating. This shift 
-                  in mindset transformed how students approached challenges.
-                </p>
-
-                <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6 my-6">
-                  <div className="flex items-start gap-4">
-                    <Heart className="w-6 h-6 text-pink-400 mt-1 shrink-0" />
-                    <div>
-                      <h4 className="text-white font-semibold mb-2">Student Success Story</h4>
-                      <p className="text-neutral-300 leading-relaxed text-sm">
-                        "Sarah, a shy 8th grader, initially struggled with basic programming concepts. Through a personalized 
-                        game development project that aligned with her love for storytelling, she not only mastered Python 
-                        basics but went on to create a complex interactive adventure game. Her confidence soared, and she's 
-                        now considering a computer science major."
-                      </p>
-                    </div>
-                  </div>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center">
+                  <div className="text-3xl font-bold text-blue-400 mb-2">85%</div>
+                  <div className="text-gray-300">Skill Improvement</div>
+                  <div className="text-xs text-gray-500 mt-1">Average Increase</div>
                 </div>
-              </section>
-
-              <section>
-                <h2 className="text-3xl font-bold text-white mb-4">Measuring Real Impact</h2>
-                <p className="text-neutral-300 leading-relaxed mb-4">
-                  The true measure of success wasn't just in coding skills, but in the broader impact on students' 
-                  confidence, problem-solving abilities, and career aspirations.
-                </p>
-                
-                <div className="grid md:grid-cols-3 gap-6 my-6">
-                  <div className="text-center p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl">
-                    <Users className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                    <div className="text-3xl font-bold text-green-400 mb-2">100%</div>
-                    <div className="text-sm text-neutral-300">College Acceptance</div>
-                    <div className="text-xs text-neutral-400 mt-1">For CS program applicants</div>
-                  </div>
-                  
-                  <div className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl">
-                    <Target className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-                    <div className="text-3xl font-bold text-blue-400 mb-2">95%</div>
-                    <div className="text-sm text-neutral-300">Project Completion</div>
-                    <div className="text-xs text-neutral-400 mt-1">Portfolio-ready projects</div>
-                  </div>
-                  
-                  <div className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl">
-                    <BookOpen className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                    <div className="text-3xl font-bold text-purple-400 mb-2">5</div>
-                    <div className="text-sm text-neutral-300">Languages</div>
-                    <div className="text-xs text-neutral-400 mt-1">Average per student</div>
-                  </div>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center">
+                  <div className="text-3xl font-bold text-purple-400 mb-2">95%</div>
+                  <div className="text-gray-300">Project Completion</div>
+                  <div className="text-xs text-gray-500 mt-1">Success Rate</div>
                 </div>
-              </section>
+              </div>
+            </section>
 
-              <section>
-                <h2 className="text-3xl font-bold text-white mb-4">Lessons for the Future</h2>
-                <p className="text-neutral-300 leading-relaxed mb-4">
-                  This mentoring experience taught me valuable lessons that extend far beyond coding education:
-                </p>
-                <ul className="list-disc list-inside text-neutral-300 space-y-2 ml-4 mb-4">
-                  <li>Passion-driven learning is infinitely more effective than curriculum-driven learning</li>
-                  <li>Celebrating small wins builds the confidence needed for big challenges</li>
-                  <li>Every student has unique strengths that can be leveraged for learning</li>
-                  <li>The best teachers are often just one step ahead of their students</li>
-                  <li>Technology education should focus on problem-solving, not just syntax</li>
-                </ul>
-              </section>
+            {/* Project-Based Learning */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-white flex items-center gap-3">
+                <Target className="w-7 h-7 text-orange-400" />
+                The Project-Based Learning Revolution
+              </h2>
+              
+              <p className="text-gray-300 mb-8 leading-relaxed">
+                Instead of starting with syntax and theory, I decided to flip the script. Every student began with a 
+                project they were genuinely excited about. Whether it was building a game in Scratch, creating an 
+                Arduino-powered robot, or developing a simple web app, the projects came first.
+              </p>
 
-              <section>
-                <h2 className="text-3xl font-bold text-white mb-4">The Ripple Effect</h2>
-                <p className="text-neutral-300 leading-relaxed">
-                  The most rewarding part of this journey has been watching students become mentors themselves. Several 
-                  of my former students now volunteer to help younger students with their coding projects, creating a 
-                  beautiful cycle of knowledge sharing and community building. This ripple effect is what makes education 
-                  truly transformative - it doesn't just change individual lives, it builds communities.
-                </p>
-              </section>
-            </div>
-          </motion.div>
-
-          {/* Article Footer */}
-          <motion.div variants={itemVariants} className="mt-12">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Want to Learn More About My Teaching Methods?</h3>
-                  <p className="text-neutral-300">
-                    Explore my educational philosophy and see examples of student projects.
+              <div className="space-y-6">
+                <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Code className="w-6 h-6 text-blue-400" />
+                    <h4 className="text-lg font-semibold text-blue-400">Game Development in Scratch</h4>
+                  </div>
+                  <p className="text-gray-300">
+                    Students created interactive stories and games, learning programming fundamentals through visual coding. 
+                    This approach made abstract concepts like loops and conditionals tangible and fun.
                   </p>
                 </div>
-                <div className="flex gap-4">
-                  <a
-                    href="https://curiouscardinals.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-colors font-medium"
-                  >
-                    <Users className="w-5 h-5" />
-                    Curious Cardinals
-                  </a>
-                  <Link
-                    href="#contact"
-                    className="flex items-center gap-2 px-6 py-3 bg-purple-500 rounded-lg text-white hover:bg-purple-600 transition-colors font-medium"
-                  >
-                    <Heart className="w-5 h-5" />
-                    Get in Touch
-                  </Link>
+
+                <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Target className="w-6 h-6 text-green-400" />
+                    <h4 className="text-lg font-semibold text-green-400">Arduino IoT Projects</h4>
+                  </div>
+                  <p className="text-gray-300">
+                    Building motion-sensor systems and smart home prototypes, bridging hardware and software. 
+                    Students learned C++ while seeing immediate physical results of their code.
+                  </p>
+                </div>
+
+                <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <BookOpen className="w-6 h-6 text-purple-400" />
+                    <h4 className="text-lg font-semibold text-purple-400">Web Development Basics</h4>
+                  </div>
+                  <p className="text-gray-300">
+                    Creating personal portfolio websites using HTML, CSS, and JavaScript. Students built something 
+                    they could immediately share with friends and family.
+                  </p>
+                </div>
+
+                <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <TrendingUp className="w-6 h-6 text-cyan-400" />
+                    <h4 className="text-lg font-semibold text-cyan-400">Data Science Exploration</h4>
+                  </div>
+                  <p className="text-gray-300">
+                    Analyzing real-world datasets and creating visualizations using Python. Students explored topics 
+                    they cared about, from sports statistics to climate data.
+                  </p>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </motion.div>
+            </section>
+
+            {/* Personalization */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-white flex items-center gap-3">
+                <Users className="w-7 h-7 text-pink-400" />
+                The Power of Personalization
+              </h2>
+              
+              <p className="text-gray-300 mb-8 leading-relaxed">
+                One of the most important lessons I learned was that every student has a unique learning style and 
+                interest area. Some students thrived with visual programming environments like Scratch, while others 
+                were drawn to the tangible nature of hardware projects with Arduino.
+              </p>
+
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-8">
+                <h3 className="text-xl font-semibold text-white mb-6">Adaptive Teaching Strategies</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                      <h4 className="font-semibold text-yellow-400 mb-2">Visual Learners</h4>
+                      <p className="text-gray-300 text-sm">Used flowcharts and diagrams to explain algorithmic thinking</p>
+                    </div>
+                    <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                      <h4 className="font-semibold text-green-400 mb-2">Kinesthetic Learners</h4>
+                      <p className="text-gray-300 text-sm">Emphasized hands-on projects with immediate feedback</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                      <h4 className="font-semibold text-blue-400 mb-2">Analytical Minds</h4>
+                      <p className="text-gray-300 text-sm">Introduced mathematical concepts through coding challenges</p>
+                    </div>
+                    <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                      <h4 className="font-semibold text-purple-400 mb-2">Creative Spirits</h4>
+                      <p className="text-gray-300 text-sm">Focused on artistic coding and design-oriented projects</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Success Stories */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-white">Success Stories</h2>
+              
+              <div className="space-y-6">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <h4 className="text-lg font-semibold text-cyan-400 mb-3">Sarah - From Scratch to Web Development</h4>
+                  <p className="text-gray-300">
+                    Started with simple Scratch animations and progressed to building a full responsive website for her 
+                    school's robotics team. Now pursuing computer science at Stanford.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <h4 className="text-lg font-semibold text-cyan-400 mb-3">Marcus - Hardware Enthusiast to AI Explorer</h4>
+                  <p className="text-gray-300">
+                    Began with Arduino LED projects and evolved to building an AI-powered home automation system. 
+                    Accepted to MIT's electrical engineering program.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <h4 className="text-lg font-semibold text-cyan-400 mb-3">Emma - Data Science Discovery</h4>
+                  <p className="text-gray-300">
+                    Started analyzing her favorite K-pop group's music trends and developed a passion for data visualization. 
+                    Now interning at a data analytics startup.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Key Lessons */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-white">Key Lessons Learned</h2>
+              
+              <div className="space-y-6">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <h4 className="text-lg font-semibold text-cyan-400 mb-3">Start with Passion, Not Syntax</h4>
+                  <p className="text-gray-300">
+                    Students learn faster when they're working on something they care about. Find their interests 
+                    first, then introduce the technical concepts through that lens.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <h4 className="text-lg font-semibold text-cyan-400 mb-3">Fail Fast, Learn Faster</h4>
+                  <p className="text-gray-300">
+                    Encouraging students to experiment and make mistakes created a safe learning environment where 
+                    curiosity thrived over perfectionism.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <h4 className="text-lg font-semibold text-cyan-400 mb-3">Celebrate Small Wins</h4>
+                  <p className="text-gray-300">
+                    Every successfully running "Hello World" program, every working button click, and every 
+                    animated sprite deserves recognition and celebration.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Conclusion */}
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 text-white">Looking Forward</h2>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                Mentoring these incredible students has been one of the most rewarding experiences of my journey. 
+                Watching them grow from hesitant beginners to confident creators who see problems as coding opportunities 
+                reminds me why I fell in love with programming in the first place.
+              </p>
+              
+              <p className="text-gray-300 leading-relaxed">
+                The future belongs to this generation of digital natives, and I'm honored to have played a small part 
+                in preparing them to build it. Their creativity, resilience, and fresh perspectives continue to inspire 
+                my own work and remind me that the best way to learn is often to teach.
+              </p>
+            </section>
+
+          </div>
+        </article>
       </div>
     </div>
   );

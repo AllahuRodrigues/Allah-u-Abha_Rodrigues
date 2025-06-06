@@ -9,15 +9,21 @@ import { SimpleNavigation } from '@/components/navigation/SimpleNavigation';
 
 export default function Home() {
   return (
-    <>
+    <div className="min-h-screen bg-black text-white">
       <SimpleNavigation />
-      <SimpleHero />
-      <AboutSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ResearchSection />
-      <InternetPresenceSection />
-      <ContactSection />
-    </>
+      
+      <main className="content-spacing-lg">
+        <SimpleHero />
+        
+        <div className="space-y-24">
+          <AboutSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <ResearchSection />
+          <InternetPresenceSection />
+          <ContactSection />
+        </div>
+      </main>
+    </div>
   );
 }

@@ -35,18 +35,30 @@ export const SimpleNavigation = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, type: "spring" }}
         >
-          <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center">
-            <span className="text-white font-bold text-xl">AR</span>
+          <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+            <span className="text-black font-bold text-xl">AR</span>
           </div>
         </motion.div>
 
-        {/* Desktop Navigation */}
+        {/* Available for Opportunities Badge + Desktop Navigation */}
         <motion.div
-          className="hidden md:flex items-center gap-8 relative"
+          className="hidden md:flex items-center gap-6 relative"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
+          {/* Available for Opportunities Badge */}
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full backdrop-blur-sm"
+          >
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            <span className="text-green-400 text-sm font-medium whitespace-nowrap">Available for opportunities</span>
+          </motion.div>
+          
+          {/* Navigation Items */}
           <div className="flex items-center gap-6 px-6 py-3 bg-white/5 backdrop-blur-md rounded-full border border-white/10 relative z-10">
             {navItems.map((item, index) => (
               <motion.button
@@ -61,13 +73,13 @@ export const SimpleNavigation = () => {
               >
                 <span className="relative z-10">{item.name}</span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg -z-10"
+                  className="absolute inset-0 bg-white/20 rounded-lg -z-10"
                   initial={{ scale: 0, opacity: 0 }}
                   whileHover={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.2 }}
                 />
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.3 }}
@@ -110,6 +122,17 @@ export const SimpleNavigation = () => {
               transition={{ duration: 0.3, type: "spring" }}
             >
               <div className="flex flex-col gap-4 relative z-10">
+                {/* Mobile Available Badge */}
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full backdrop-blur-sm mb-2"
+                >
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <span className="text-green-400 text-sm font-medium">Available for opportunities</span>
+                </motion.div>
+                
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.href}
@@ -117,7 +140,7 @@ export const SimpleNavigation = () => {
                       smoothScrollTo(item.href.slice(1));
                       setIsOpen(false);
                     }}
-                    className="text-left text-white hover:text-purple-400 transition-colors font-medium p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10"
+                    className="text-left text-white hover:text-gray-300 transition-colors font-medium p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.1 * index }}
