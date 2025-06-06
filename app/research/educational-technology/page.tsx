@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, Users, BookOpen, BarChart3, Target, TrendingUp, Brain, Code } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, BookOpen, Users, Target, BarChart, TrendingUp, Brain } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Educational Technology Innovation Research | Allah-u-Abha Rodrigues',
@@ -75,7 +75,7 @@ export default function EducationalTechnologyResearchPage() {
               </h2>
               <p className="text-gray-300 leading-relaxed">
                 This research focuses on understanding how project-based learning methodologies can be optimized 
-                for computer science education. Through my work with Curious Cardinals, I'm conducting a longitudinal 
+                for computer science education. Through my work with Curious Cardinals, I&apos;m conducting a longitudinal 
                 study on student engagement, learning outcomes, and skill retention when using hands-on projects 
                 versus traditional lecture-based approaches.
               </p>
@@ -111,7 +111,7 @@ export default function EducationalTechnologyResearchPage() {
             {/* Methodology */}
             <section className="mb-12">
               <h2 className="text-3xl font-bold mb-6 text-white flex items-center gap-3">
-                <BarChart3 className="w-7 h-7 text-green-400" />
+                <BarChart className="w-7 h-7 text-green-400" />
                 Research Methodology
               </h2>
               
@@ -196,7 +196,7 @@ export default function EducationalTechnologyResearchPage() {
             {/* Technical Implementation */}
             <section className="mb-12">
               <h2 className="text-3xl font-bold mb-6 text-white flex items-center gap-3">
-                <Code className="w-7 h-7 text-orange-400" />
+                <ExternalLink className="w-7 h-7 text-orange-400" />
                 Technical Implementation
               </h2>
               
@@ -250,7 +250,7 @@ export default function EducationalTechnologyResearchPage() {
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
                   <h4 className="text-lg font-semibold text-cyan-400 mb-3">Publication Plan</h4>
                   <p className="text-gray-300 mb-4">
-                    Preparing "Project-Based Learning in CS Education: A Quantitative Analysis" for submission 
+                    Preparing &quot;Project-Based Learning in CS Education: A Quantitative Analysis&quot; for submission 
                     to the Journal of Educational Technology Research by June 2025.
                   </p>
                   <div className="text-sm text-gray-500">Expected completion: June 2025</div>
@@ -280,7 +280,7 @@ export default function EducationalTechnologyResearchPage() {
                 <h3 className="text-2xl font-bold text-white mb-4">Research Collaboration</h3>
                 <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
                   Interested in collaborating on educational technology research or implementing project-based 
-                  learning methodologies? Let's discuss opportunities for partnership and knowledge sharing.
+                  learning methodologies? Let&apos;s discuss opportunities for partnership and knowledge sharing.
                 </p>
                 <Link
                   href="/#contact"

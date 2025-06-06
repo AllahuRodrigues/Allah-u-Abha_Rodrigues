@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, FileText, Database, Brain, Settings, Monitor, CheckCircle, ArrowRight, Code, BarChart3 } from 'lucide-react';
+import { ArrowLeft, FileText, Database, Brain, Settings, Monitor, CheckCircle, Code, BarChart3 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Machine Learning Project Workflow | Allah-u-Abha Rodrigues',
@@ -336,7 +336,7 @@ if st.button("Predict Salary"):
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
                   <h4 className="text-lg font-semibold text-green-400 mb-3 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5" />
-                    Do's
+                    Do&apos;s
                   </h4>
                   <ul className="text-gray-300 space-y-2 text-sm">
                     <li>• Version control your data and models</li>

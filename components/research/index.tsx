@@ -1,7 +1,8 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, ExternalLink, FileText, Calendar, ArrowRight, Target, Zap, Microscope } from 'lucide-react';
+import { Brain, FileText, Calendar, ArrowRight, Target, Zap, Microscope } from 'lucide-react';
 
 export const ResearchSection = () => {
   const researchAreas = [
@@ -121,7 +122,7 @@ export const ResearchSection = () => {
             </h2>
             
             <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-              I'm passionate about researching how emerging technologies can solve real-world problems, 
+              I&apos;m passionate about researching how emerging technologies can solve real-world problems, 
               improve developer experiences, and make technology more accessible to everyone.
             </p>
           </motion.div>
@@ -216,8 +217,8 @@ export const ResearchSection = () => {
                 Interested in Research Collaboration?
               </h3>
               <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
-                I'm always open to discussing research opportunities, collaborating on papers, 
-                or exploring new areas of investigation in technology and education.
+                I&apos;m actively seeking collaborators for impactful research that bridges technology 
+                and education. Let&apos;s advance the field together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.a

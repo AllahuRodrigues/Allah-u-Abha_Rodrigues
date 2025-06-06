@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Check, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, MapPin, Send, Check, AlertCircle, Loader2 } from 'lucide-react';
 import { profile } from '@/lib/constants';
 
 // ShadCN-inspired UI components
@@ -123,7 +123,7 @@ export default function ContactSection() {
         setStatus('error');
         setResponseMessage(result.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
       setResponseMessage('Network error. Please check your connection and try again.');
     }
@@ -240,7 +240,7 @@ export default function ContactSection() {
             </motion.div>
             
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Let's Build Something
+              Let&apos;s Build Something
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-300">
                 Amazing Together
@@ -249,7 +249,7 @@ export default function ContactSection() {
             
             <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
               Ready to discuss your next project, explore collaboration opportunities, or just say hello? 
-              I'd love to hear from you and explore how we can create something exceptional.
+              I would love to hear from you and explore how we can create something exceptional.
             </p>
           </motion.div>
 

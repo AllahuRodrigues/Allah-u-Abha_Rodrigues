@@ -150,7 +150,7 @@ export default function MachineLearningPredictionPage() {
                     <div>
                       <h4 className="font-semibold text-purple-400 mb-2">Feature Engineering</h4>
                       <p className="text-gray-300 text-sm">
-                        Created composite features like "Tech Stack Complexity" and "Career Level" 
+                        Created composite features like &quot;Tech Stack Complexity&quot; and &quot;Career Level&quot; 
                         from multiple survey responses.
                       </p>
                     </div>

@@ -1,10 +1,9 @@
 'use client';
 
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import { ExternalLink, Github, Calendar, TrendingUp, Users, Target, ChevronRight, Play, Code, Globe } from 'lucide-react';
+import { ExternalLink, Github, Calendar, Code, TrendingUp, ChevronRight, Users, Target, Globe } from 'lucide-react';
 import { profile } from '@/lib/constants';
-import Image from 'next/image';
 
 export const ProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
@@ -100,9 +99,10 @@ export const ProjectsSection = () => {
               </span>
             </h2>
             
-            <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-              From machine learning models to production-ready applications, explore the projects 
-              that showcase my technical expertise and passion for solving real-world problems.
+            <p className="text-gray-400 text-center max-w-3xl mx-auto">
+              From full-stack web applications to machine learning models, here&apos;s a showcase of my most impactful 
+              projects. Each project represents a unique challenge solved through innovative thinking, cutting-edge 
+              technology, and a commitment to creating meaningful solutions that make a real difference.
             </p>
           </motion.div>
 
@@ -322,9 +322,9 @@ export const ProjectsSection = () => {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Interested in collaborating?
               </h3>
-              <p className="text-neutral-300 mb-6 max-w-2xl mx-auto">
-                I'm always excited to work on innovative projects that make a positive impact. 
-                Let's discuss how we can build something amazing together.
+              <p className="text-gray-300 mb-6">
+                Let us discuss your next project and explore how we can bring your vision to life with innovative 
+                technology solutions.
               </p>
               <motion.a
                 href="#contact"
@@ -332,7 +332,7 @@ export const ProjectsSection = () => {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-500 to-purple-500 rounded-full text-white font-semibold hover:shadow-2xl hover:shadow-accent-500/25 transition-all duration-300"
               >
-                <span>Let's Work Together</span>
+                <span>Let&apos;s Work Together</span>
                 <ChevronRight className="w-5 h-5" />
               </motion.a>
             </div>

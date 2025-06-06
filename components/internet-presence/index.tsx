@@ -265,11 +265,11 @@ export const InternetPresenceSection = () => {
           className="text-center glass-dark rounded-2xl p-8 border border-white/10"
         >
           <h3 className="text-2xl font-bold text-white mb-4">
-            Let's Build Something Amazing Together
+            Let&apos;s Build Something Amazing Together
           </h3>
           <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-            Whether you're interested in collaboration, have a question about my work, 
-            or want to discuss the latest in tech, I'd love to hear from you.
+            Whether you are interested in collaboration, have a question about my work, 
+            or want to discuss the latest in tech, I&apos;d love to hear from you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

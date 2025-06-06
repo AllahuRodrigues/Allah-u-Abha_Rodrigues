@@ -11,7 +11,7 @@ const newsletterSchema = z.object({
 });
 
 // Welcome email template for new subscribers
-const WelcomeEmailTemplate = ({ email, interests }: { email: string; interests: string[] }) => `
+const WelcomeEmailTemplate = ({ interests }: { interests: string[] }) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
       from: 'Allah-u-Abha Rodrigues <newsletter@allahurodrigues.com>',
       to: [email],
       subject: 'Welcome to my newsletter! 🚀',
-      html: WelcomeEmailTemplate({ email, interests }),
+      html: WelcomeEmailTemplate({ interests }),
     });
 
     // Send notification to admin

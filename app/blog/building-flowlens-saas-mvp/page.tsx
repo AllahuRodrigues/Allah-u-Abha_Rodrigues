@@ -73,22 +73,29 @@ export default function BuildingFlowLensSaasPage() {
               <p className="text-gray-300 leading-relaxed">
                 Every e-commerce business faces the same challenge: understanding why users abandon their carts, 
                 where they get confused, and what friction points prevent conversions. Traditional analytics tools 
-                tell you <em>what</em> happened, but they don't show you <em>why</em> it happened or <em>how</em> to fix it.
+                tell you <em>what</em> happened, but they don&apos;t show you <em>why</em> it happened or <em>how</em> to fix it.
               </p>
             </div>
 
             {/* The Vision */}
             <section className="mb-12">
               <h2 className="text-3xl font-bold mb-6 text-white">The Vision: FlowLens</h2>
-              <p className="text-gray-300 mb-6 text-lg leading-relaxed">
-                FlowLens emerged from a simple insight: <strong>businesses need to see exactly how and why users 
-                struggle—and what to do about it.</strong> The name itself captures this perfectly:
+              <p className="text-gray-300 leading-relaxed mb-4">
+                FlowLens started as a simple idea: what if we could make data visualization as intuitive as 
+                sketching on paper? After months of research and development, we&apos;ve built an AI-powered platform 
+                that transforms complex datasets into beautiful, interactive visualizations with just a few clicks.
               </p>
               
+              <p className="text-gray-300 leading-relaxed">
+                This case study walks through our journey from concept to MVP, the technical challenges we faced, 
+                and the innovative solutions we developed. We&apos;ll explore the architecture, AI integration, 
+                and user experience decisions that shaped FlowLens into what it is today.
+              </p>
+
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-purple-400 mb-3">Flow</h3>
-                  <p className="text-gray-300">Evokes user "flow" and the ease of capturing user paths through your application.</p>
+                  <p className="text-gray-300">Evokes user &quot;flow&quot; and the ease of capturing user paths through your application.</p>
                 </div>
                 <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6">
                   <h3 className="text-xl font-semibold text-blue-400 mb-3">Lens</h3>
@@ -97,8 +104,8 @@ export default function BuildingFlowLensSaasPage() {
               </div>
 
               <blockquote className="border-l-4 border-cyan-500 pl-6 my-8 text-cyan-100 text-lg italic">
-                "FlowLens is the fastest way to see exactly how and why users struggle in your online store 
-                or web app—and what to do about it."
+                &quot;FlowLens is the fastest way to see exactly how and why users struggle in your online store 
+                or web app—and what to do about it.&quot;
               </blockquote>
             </section>
 
@@ -188,7 +195,7 @@ export default function BuildingFlowLensSaasPage() {
                   <h4 className="text-lg font-semibold text-cyan-400 mb-3">MVP Means Minimum <em>Viable</em> Product</h4>
                   <p className="text-gray-300">
                     Focus on solving one problem exceptionally well rather than many problems poorly. 
-                    FlowLens excels at showing user friction—that's it.
+                    FlowLens excels at showing user friction—that&apos;s it.
                   </p>
                 </div>
 
@@ -204,9 +211,9 @@ export default function BuildingFlowLensSaasPage() {
 
             {/* Next Steps */}
             <section className="mb-12">
-              <h2 className="text-3xl font-bold mb-6 text-white">What's Next</h2>
+              <h2 className="text-3xl font-bold mb-6 text-white">What&apos;s Next</h2>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                FlowLens is just getting started. We're expanding beyond Shopify to support WooCommerce, 
+                FlowLens is just getting started. We&apos;re expanding beyond Shopify to support WooCommerce, 
                 Magento, and custom e-commerce platforms. The vision remains the same: make it impossibly 
                 easy for businesses to understand and optimize their user experience.
               </p>

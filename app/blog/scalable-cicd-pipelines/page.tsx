@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Github, ExternalLink, TrendingUp, Target, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function ScalableCICDPipelinesPage() {
   const articleData = {
@@ -217,7 +216,7 @@ export default function ScalableCICDPipelinesPage() {
                   This project taught me several valuable lessons about DevOps and software engineering:
                 </p>
                 <ul className="list-disc list-inside text-neutral-300 space-y-2 ml-4 mb-4">
-                  <li>The importance of measuring everything - you can't improve what you don't measure</li>
+                  <li>The importance of measuring everything - you can&apos;t improve what you don&apos;t measure</li>
                   <li>Incremental improvements often lead to dramatic results</li>
                   <li>Automation is not just about efficiency, but also about reliability and consistency</li>
                   <li>Team buy-in is crucial for successful DevOps transformations</li>
@@ -226,9 +225,9 @@ export default function ScalableCICDPipelinesPage() {
               </section>
 
               <section>
-                <h2 className="text-3xl font-bold text-white mb-4">What's Next?</h2>
+                <h2 className="text-3xl font-bold text-white mb-4">What is Next</h2>
                 <p className="text-neutral-300 leading-relaxed">
-                  Building on this success, I'm now exploring how machine learning can further optimize our deployment 
+                  Building on this success, I&apos;m now exploring how machine learning can further optimize our deployment 
                   pipelines. Areas of interest include predictive scaling, intelligent testing strategies, and 
                   automated incident response. The goal is to make our systems not just fast, but also intelligent 
                   and self-healing.

@@ -191,7 +191,7 @@ function Interactive3DCube() {
 }
 
 // Tech Stack Floating Icons
-function TechIcon({ icon: Icon, label, delay = 0, index }: { icon: any; label: string; delay?: number; index: number }) {
+function TechIcon({ icon: Icon, label, delay = 0 }: { icon: React.ComponentType<{ className?: string }>; label: string; delay?: number }) {
   return (
     <motion.div
       className="group flex flex-col items-center gap-2 p-4 glass-dark rounded-xl border border-white/10 hover:border-white/30 transition-all duration-300 card-hover interactive-element"
@@ -407,7 +407,6 @@ export function SimpleHero() {
               icon={tech.icon}
               label={tech.label}
               delay={1.3 + index * 0.1}
-              index={index}
             />
           ))}
         </motion.div>
@@ -427,7 +426,7 @@ export function SimpleHero() {
           >
             <span className="relative z-10 flex items-center gap-2">
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              Let's Connect
+              Let&apos;s Connect
             </span>
             <div className="absolute inset-0 bg-gray-200 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
           </motion.button>

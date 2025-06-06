@@ -215,7 +215,7 @@ export default function MentoringNextGenerationPage() {
                   <h4 className="text-lg font-semibold text-cyan-400 mb-3">Sarah - From Scratch to Web Development</h4>
                   <p className="text-gray-300">
                     Started with simple Scratch animations and progressed to building a full responsive website for her 
-                    school's robotics team. Now pursuing computer science at Stanford.
+                    school&apos;s robotics team. Now pursuing computer science at Stanford.
                   </p>
                 </div>
 
@@ -223,14 +223,14 @@ export default function MentoringNextGenerationPage() {
                   <h4 className="text-lg font-semibold text-cyan-400 mb-3">Marcus - Hardware Enthusiast to AI Explorer</h4>
                   <p className="text-gray-300">
                     Began with Arduino LED projects and evolved to building an AI-powered home automation system. 
-                    Accepted to MIT's electrical engineering program.
+                    Accepted to MIT&apos;s electrical engineering program.
                   </p>
                 </div>
 
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
                   <h4 className="text-lg font-semibold text-cyan-400 mb-3">Emma - Data Science Discovery</h4>
                   <p className="text-gray-300">
-                    Started analyzing her favorite K-pop group's music trends and developed a passion for data visualization. 
+                    Started analyzing her favorite K-pop group&apos;s music trends and developed a passion for data visualization. 
                     Now interning at a data analytics startup.
                   </p>
                 </div>
@@ -245,7 +245,7 @@ export default function MentoringNextGenerationPage() {
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
                   <h4 className="text-lg font-semibold text-cyan-400 mb-3">Start with Passion, Not Syntax</h4>
                   <p className="text-gray-300">
-                    Students learn faster when they're working on something they care about. Find their interests 
+                    Students learn faster when they&apos;re working on something they care about. Find their interests 
                     first, then introduce the technical concepts through that lens.
                   </p>
                 </div>
@@ -261,7 +261,7 @@ export default function MentoringNextGenerationPage() {
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
                   <h4 className="text-lg font-semibold text-cyan-400 mb-3">Celebrate Small Wins</h4>
                   <p className="text-gray-300">
-                    Every successfully running "Hello World" program, every working button click, and every 
+                    Every successfully running &quot;Hello World&quot; program, every working button click, and every 
                     animated sprite deserves recognition and celebration.
                   </p>
                 </div>
@@ -278,7 +278,7 @@ export default function MentoringNextGenerationPage() {
               </p>
               
               <p className="text-gray-300 leading-relaxed">
-                The future belongs to this generation of digital natives, and I'm honored to have played a small part 
+                The future belongs to this generation of digital natives, and I&apos;m honored to have played a small part 
                 in preparing them to build it. Their creativity, resilience, and fresh perspectives continue to inspire 
                 my own work and remind me that the best way to learn is often to teach.
               </p>

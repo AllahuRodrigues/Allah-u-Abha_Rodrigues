@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, MapPin, Linkedin, Github, User, MessageSquare, Sparkles, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Send, Mail, CheckCircle, AlertCircle, Loader2, Clock, User, MessageSquare } from 'lucide-react';
 import { profile } from '@/lib/constants';
 
 export const ContactSection = () => {
@@ -57,7 +57,7 @@ export const ContactSection = () => {
         setContactStatus('error');
         setMessages({ ...messages, contact: 'Failed to send message. Please try again.' });
       }
-    } catch (error) {
+    } catch {
       setContactStatus('error');
       setMessages({ ...messages, contact: 'An error occurred. Please try again.' });
     }
@@ -86,7 +86,7 @@ export const ContactSection = () => {
         setNewsletterStatus('error');
         setMessages({ ...messages, newsletter: 'Failed to subscribe. Please try again.' });
       }
-    } catch (error) {
+    } catch {
       setNewsletterStatus('error');
       setMessages({ ...messages, newsletter: 'An error occurred. Please try again.' });
     }
@@ -132,8 +132,8 @@ export const ContactSection = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 mb-6"
             >
-              <Sparkles className="w-4 h-4 text-accent-400" />
-              <span className="text-accent-400 text-sm font-medium">Let's Connect</span>
+              <Clock className="w-4 h-4 text-accent-400" />
+              <span className="text-accent-400 text-sm font-medium">Let&apos;s Connect</span>
             </motion.div>
             
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -145,8 +145,8 @@ export const ContactSection = () => {
             </h2>
             
             <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-              Whether you have a project in mind, want to collaborate, or just want to say hello,
-              I'd love to hear from you. Let's create something extraordinary.
+              Ready to discuss your next project? I&apos;d love to hear from you! Whether it&apos;s about web development, 
+              machine learning, research collaboration, or just a friendly chat about technology and education.
             </p>
           </motion.div>
 
@@ -262,7 +262,7 @@ export const ContactSection = () => {
               {/* Newsletter Subscription */}
               <div className="bg-gradient-to-br from-purple-500/10 to-blue-500/10 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                  <Sparkles className="w-6 h-6 text-purple-400" />
+                  <Clock className="w-6 h-6 text-purple-400" />
                   Stay Updated
                 </h3>
                 <p className="text-neutral-300 mb-6">
@@ -318,7 +318,7 @@ export const ContactSection = () => {
 
               {/* Contact Info */}
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-white mb-6">Let's Connect</h3>
+                <h3 className="text-xl font-bold text-white mb-6">Let&apos;s Connect</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-neutral-300">
                     <Mail className="w-5 h-5 text-accent-400" />
