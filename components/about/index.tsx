@@ -1,222 +1,96 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code, Building2, Award, Target, Users, Zap } from 'lucide-react';
 import { profile } from '@/lib/constants';
 
-export const AboutSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+const item = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  const highlights = [
-    {
-      icon: Building2,
-      title: "Founder, Regilon",
-      description: "Building property-tax intelligence for CRE portfolios — ML, statistical modeling, and document intelligence to detect overassessments and surface appeal evidence"
-    },
-    {
-      icon: Code,
-      title: "Full-Stack Engineer",
-      description: "Python, TypeScript, Next.js, React, Node.js — production systems from geospatial APIs to ML pipelines and real-time dashboards"
-    },
-    {
-      icon: Award,
-      title: "Academic Achievement",
-      description: "3.72 GPA at Yale University studying Computer Science & Statistics, with a certificate in Data Science"
-    },
-    {
-      icon: Target,
-      title: "PropTech Builder",
-      description: "Built Tenure (B2C lease intelligence) then pivoted to Regilon (B2B property-tax) — same data stack, larger recurring problem"
-    },
-    {
-      icon: Zap,
-      title: "ML & Data Engineering",
-      description: "scikit-learn, PyTorch, XGBoost — from salary predictors to demand forecasting engines to overassessment scoring models"
-    },
-    {
-      icon: Users,
-      title: "Community & Mentorship",
-      description: "Yale Computer Society (Yalies.io), mentor at Curious Cardinals, Yale Hacker House 2026 cohort"
-    }
-  ];
-
-  return (
-    <section id="about" className="py-20 relative overflow-hidden">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            About Me
-          </h2>
-          <p className="text-xl text-neutral-300 max-w-4xl mx-auto leading-relaxed">
-            {profile.longBio.split('\n\n')[0]}
-          </p>
+export const AboutSection = () => (
+  <section id="about" className="py-16 section-divider">
+    <div className="container max-w-3xl mx-auto">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ staggerChildren: 0.1 }}
+      >
+        {/* Header */}
+        <motion.div variants={item} className="mb-10">
+          <p className="text-xs text-zinc-600 uppercase tracking-widest mb-2 font-mono">/about</p>
+          <h2 className="text-3xl font-bold text-white">About</h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Column - Bio */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <div className="prose prose-lg prose-invert max-w-none">
-              {profile.longBio.split('\n\n').slice(1).map((paragraph, index) => (
-                <p key={index} className="text-neutral-300 leading-relaxed mb-4">
-                  {paragraph}
-                </p>
-              ))}
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* Bio */}
+          <motion.div variants={item} className="lg:col-span-3 space-y-3">
+            {profile.longBio.split('\n\n').map((para, i) => (
+              <p key={i} className="text-zinc-400 text-sm leading-relaxed">
+                {para}
+              </p>
+            ))}
+          </motion.div>
+
+          {/* Right column */}
+          <motion.div variants={item} className="lg:col-span-2 space-y-6">
+            {/* Education */}
+            <div>
+              <p className="text-xs text-zinc-600 uppercase tracking-widest mb-3 font-mono">Education</p>
+              <div className="space-y-2">
+                {profile.education.map((edu, i) => (
+                  <div key={i} className="p-3 rounded-lg bg-white/[0.03] border border-white/8">
+                    <p className="text-white text-sm font-medium">{edu.institution}</p>
+                    <p className="text-zinc-500 text-xs mt-0.5">
+                      {edu.degree} · {edu.field}
+                    </p>
+                    <p className="text-zinc-600 text-xs mt-0.5">{edu.period}</p>
+                    {'gpa' in edu && (
+                      <p className="text-zinc-500 text-xs mt-1">GPA {(edu.gpa as number).toFixed(2)}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="pt-6">
-              <h3 className="text-2xl font-semibold text-white mb-4">Current Focus</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {profile.interests.slice(0, 4).map((interest, index) => (
-                  <div key={index} className="p-3 rounded-lg bg-white/5 border border-white/10">
-                    <span className="text-sm text-accent-400 font-medium">{interest}</span>
+            {/* Achievements / Leadership */}
+            <div>
+              <p className="text-xs text-zinc-600 uppercase tracking-widest mb-3 font-mono">Recognition</p>
+              <div className="space-y-2">
+                {profile.achievements.map((a, i) => (
+                  <div key={i} className="p-3 rounded-lg bg-white/[0.03] border border-white/8">
+                    <p className="text-white text-xs font-medium leading-snug">{a.title}</p>
+                    <p className="text-zinc-600 text-xs mt-0.5">{a.organization} · {a.period}</p>
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
-
-          {/* Right Column - Highlights */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <h3 className="text-2xl font-semibold text-white mb-8">What I Bring</h3>
-            {highlights.map((highlight, index) => {
-              const Icon = highlight.icon;
-              return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="group p-6 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-accent-500/20 text-accent-400 group-hover:bg-accent-500/30 transition-colors">
-                      <Icon size={20} />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-white mb-2">{highlight.title}</h4>
-                      <p className="text-sm text-neutral-400">{highlight.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
         </div>
 
-        {/* Skills Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-20"
-        >
-          <h3 className="text-2xl font-semibold text-white text-center mb-12">Technical Skills</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {profile.skills.map((skillCategory, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300"
-              >
-                <h4 className="font-semibold text-accent-400 mb-4">{skillCategory.category}</h4>
-                <div className="flex flex-wrap gap-2">
-                  {skillCategory.items.map((skill, skillIndex) => (
+        {/* Skills */}
+        <motion.div variants={item} className="mt-10">
+          <p className="text-xs text-zinc-600 uppercase tracking-widest mb-4 font-mono">Technical Skills</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {profile.skills.map((cat, i) => (
+              <div key={i} className="p-3 rounded-lg bg-white/[0.03] border border-white/8">
+                <p className="text-xs text-zinc-500 font-medium mb-2">{cat.category}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.items.map((skill) => (
                     <span
-                      key={skillIndex}
-                      className="px-3 py-1 text-xs rounded-full bg-white/10 text-neutral-300 hover:bg-accent-500/20 hover:text-accent-300 transition-colors"
+                      key={skill}
+                      className="px-1.5 py-0.5 text-[11px] rounded bg-white/5 text-zinc-500 border border-white/8 hover:text-zinc-300 transition-colors"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>
-
-        {/* Education & Achievements */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 grid md:grid-cols-2 gap-12"
-        >
-          {/* Education */}
-          <div>
-            <h3 className="text-2xl font-semibold text-white mb-8">Education</h3>
-            <div className="space-y-6">
-              {profile.education.map((edu, index) => (
-                <div key={index} className="p-6 rounded-lg bg-white/5 border border-white/10">
-                  <h4 className="font-semibold text-white mb-1">{edu.institution}</h4>
-                  <p className="text-accent-400 mb-2">{edu.degree} in {edu.field}</p>
-                  <p className="text-sm text-neutral-400 mb-3">{edu.period}</p>
-                  {'gpa' in edu && (
-                    <p className="text-sm text-neutral-300 mb-3">GPA: {(edu.gpa as number).toFixed(2)}</p>
-                  )}
-                  {'activities' in edu && edu.activities && (
-                    <div className="flex flex-wrap gap-2">
-                      {edu.activities.slice(0, 3).map((activity, actIndex) => (
-                        <span key={actIndex} className="px-2 py-1 text-xs rounded bg-accent-500/20 text-accent-300">
-                          {activity}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Achievements */}
-          <div>
-            <h3 className="text-2xl font-semibold text-white mb-8">Leadership & Recognition</h3>
-            <div className="space-y-6">
-              {profile.achievements.map((achievement, index) => (
-                <div key={index} className="p-6 rounded-lg bg-white/5 border border-white/10">
-                  <h4 className="font-semibold text-white mb-1">{achievement.title}</h4>
-                  <p className="text-accent-400 mb-2">{achievement.organization}</p>
-                  <p className="text-sm text-neutral-400 mb-3">{achievement.period}</p>
-                  <p className="text-sm text-neutral-300">{achievement.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}; 
+      </motion.div>
+    </div>
+  </section>
+);

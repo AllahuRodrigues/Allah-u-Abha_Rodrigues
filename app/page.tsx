@@ -10,10 +10,10 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white">
       <SimpleNavigation />
       
-      <main className="content-spacing-lg">
+      <main>
         <SimpleHero />
         
-        <div className="space-y-24">
+        <div>
           <AboutSection />
           <ExperienceSection />
           <ProjectsSection />

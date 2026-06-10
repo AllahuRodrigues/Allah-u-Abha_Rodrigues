@@ -1,189 +1,136 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, ExternalLink, Github, TrendingUp, Users, Target, Award } from 'lucide-react';
+import { MapPin, Calendar, ExternalLink, Github, ChevronRight } from 'lucide-react';
 import { profile } from '@/lib/constants';
 
-export const ExperienceSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+type ExpLinks = { company?: string; github?: string; achievement?: string };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+};
 
-  const getAchievementIcon = (achievement: string) => {
-    if (achievement.includes('%') || achievement.includes('reduced') || achievement.includes('improved')) {
-      return TrendingUp;
-    }
-    if (achievement.includes('students') || achievement.includes('mentored')) {
-      return Users;
-    }
-    if (achievement.includes('built') || achievement.includes('implemented') || achievement.includes('designed')) {
-      return Target;
-    }
-    return Award;
-  };
+export const ExperienceSection = () => (
+  <section id="experience" className="py-16 section-divider">
+    <div className="container max-w-3xl mx-auto">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ staggerChildren: 0.12 }}
+      >
+        {/* Header */}
+        <motion.div variants={item} className="mb-10">
+          <p className="text-xs text-zinc-600 uppercase tracking-widest mb-2 font-mono">
+            /experience
+          </p>
+          <h2 className="text-3xl font-bold text-white">
+            Work & Fellowships
+          </h2>
+          <p className="text-zinc-500 mt-1.5 text-sm">
+            From founding Regilon to UNDP GRP Fellow, HapSTR, Unlock Labs, and Yale
+          </p>
+        </motion.div>
 
-  return (
-    <section id="experience" className="py-24 bg-gradient-to-b from-background to-black/50">
-      <div className="container">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Experience
-            </h2>
-            <p className="text-xl text-neutral-300">
-              From UNDP GRP Fellow to founding Regilon and engineering at HapSTR, Unlock Labs, and Yale
-            </p>
-          </motion.div>
+        {/* Timeline */}
+        <div className="relative">
+          {/* Line */}
+          <div className="absolute left-[11px] top-2 bottom-2 w-px bg-white/8 hidden sm:block" />
 
-          {/* Experience Items */}
-          <div className="space-y-8">
+          <div className="space-y-4">
             {profile.experience.map((exp, index) => (
               <motion.div
                 key={index}
-                variants={itemVariants}
-                className="group relative"
+                variants={item}
+                className="relative sm:pl-8"
               >
-                {/* Timeline Connector */}
-                {index < profile.experience.length - 1 && (
-                  <div className="absolute left-6 top-20 w-0.5 h-32 bg-gradient-to-b from-accent-500/50 to-transparent hidden md:block" />
-                )}
-                
-                <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-accent-500/30 transition-all duration-500 group-hover:scale-[1.02]">
-                  {/* Company Header */}
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">
+                {/* Dot */}
+                <div className="absolute left-0 top-5 w-[23px] h-[23px] rounded-full border border-white/15 bg-black flex items-center justify-center hidden sm:flex">
+                  <div className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
+                </div>
+
+                <div className="group bg-white/[0.03] border border-white/8 rounded-xl p-5 hover:bg-white/[0.06] hover:border-white/15 transition-all duration-300">
+                  {/* Top row */}
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                    <div className="flex items-start gap-3">
+                      {/* Company initial */}
+                      <div className="w-8 h-8 rounded-md bg-white/8 border border-white/10 flex items-center justify-center text-xs font-bold text-zinc-300 shrink-0 mt-0.5">
                         {exp.company.charAt(0)}
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-accent-400 transition-colors">
+                        <h3 className="text-white font-semibold leading-snug group-hover:text-zinc-200 transition-colors">
                           {exp.role}
                         </h3>
-                        <div className="flex items-center gap-2 text-accent-400 font-semibold mb-2">
-                          <span>{exp.company}</span>
-                          {exp.links?.company && (
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <span className="text-zinc-400 text-sm">{exp.company}</span>
+                          {(exp.links as ExpLinks)?.company && (
                             <a
-                              href={exp.links.company}
+                              href={(exp.links as ExpLinks).company}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="hover:text-accent-300 transition-colors"
+                              className="text-zinc-600 hover:text-zinc-300 transition-colors"
                             >
-                              <ExternalLink className="w-4 h-4" />
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                          {(exp.links as ExpLinks)?.github && (
+                            <a
+                              href={(exp.links as ExpLinks).github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-zinc-600 hover:text-zinc-300 transition-colors"
+                            >
+                              <Github className="w-3 h-3" />
                             </a>
                           )}
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-neutral-400 text-sm">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="w-4 h-4" />
-                            <span>{exp.period}</span>
-                          </div>
-                          <span className="hidden sm:block">•</span>
-                          <div className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
-                            <span>{exp.location}</span>
-                          </div>
-                        </div>
                       </div>
                     </div>
-                    
-                    {/* Action Links */}
-                    <div className="flex items-center gap-2 mt-4 md:mt-0">
-                      {exp.links?.github && (
-                        <a
-                          href={exp.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white hover:text-accent-400 transition-all duration-300"
-                          title="View Code"
-                        >
-                          <Github className="w-4 h-4" />
-                        </a>
-                      )}
-                      {exp.links?.achievement && (
-                        <a
-                          href={exp.links.achievement}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-full bg-accent-500/20 hover:bg-accent-500/30 text-accent-400 hover:text-accent-300 transition-all duration-300"
-                          title="Read More"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      )}
+                    <div className="flex flex-col items-end gap-1 shrink-0">
+                      <div className="flex items-center gap-1 text-xs text-zinc-500">
+                        <Calendar className="w-3 h-3" />
+                        {exp.period}
+                      </div>
+                      <div className="flex items-center gap-1 text-xs text-zinc-600">
+                        <MapPin className="w-3 h-3" />
+                        {exp.location}
+                      </div>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-neutral-300 text-lg leading-relaxed mb-6 font-medium">
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-3">
                     {exp.description}
                   </p>
 
-                  {/* Key Achievements */}
-                  <div className="mb-6">
-                    <h4 className="text-white font-semibold mb-4 flex items-center gap-2">
-                      <Award className="w-5 h-5 text-accent-400" />
-                      Key Achievements
-                    </h4>
-                    <div className="grid gap-3">
-                      {exp.achievements.map((achievement, achievementIndex) => {
-                        const Icon = getAchievementIcon(achievement);
-                        return (
-                          <div
-                            key={achievementIndex}
-                            className="flex items-start gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group/achievement"
-                          >
-                            <Icon className="w-5 h-5 text-accent-400 mt-0.5 shrink-0 group-hover/achievement:scale-110 transition-transform" />
-                            <span className="text-neutral-300 leading-relaxed">
-                              {achievement}
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
+                  {/* Achievements */}
+                  <ul className="space-y-1.5 mb-3">
+                    {exp.achievements.map((a, i) => (
+                      <li key={i} className="flex items-start gap-2 text-xs text-zinc-500 leading-relaxed">
+                        <ChevronRight className="w-3 h-3 mt-0.5 shrink-0 text-zinc-600" />
+                        {a}
+                      </li>
+                    ))}
+                  </ul>
 
-                  {/* Technologies */}
-                  <div>
-                    <h4 className="text-white font-semibold mb-3">Technologies Used</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 text-sm bg-accent-500/20 text-accent-300 rounded-full border border-accent-500/30 hover:bg-accent-500/30 transition-colors"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Tech tags */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {exp.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-2 py-0.5 text-[11px] rounded-md bg-white/5 text-zinc-500 border border-white/8"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}; 
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);

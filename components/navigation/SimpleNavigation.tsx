@@ -21,9 +21,9 @@ export const SimpleNavigation = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'py-2 bg-black/80 backdrop-blur-xl border-b border-white/10' 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'py-2 bg-black/90 backdrop-blur-xl border-b border-white/[0.06]'
           : 'py-4 bg-transparent'
       }`}
     >
@@ -47,43 +47,18 @@ export const SimpleNavigation = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* Available for Opportunities Badge */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full backdrop-blur-sm"
-          >
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-green-400 text-sm font-medium whitespace-nowrap">Available for opportunities</span>
-          </motion.div>
-          
           {/* Navigation Items */}
-          <div className="flex items-center gap-6 px-6 py-3 bg-white/5 backdrop-blur-md rounded-full border border-white/10 relative z-10">
+          <div className="flex items-center gap-1 px-3 py-1.5 bg-white/[0.04] backdrop-blur-md rounded-lg border border-white/[0.08] relative z-10">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.href}
                 onClick={() => smoothScrollTo(item.href.slice(1))}
-                className="relative text-sm text-gray-300 hover:text-white transition-all duration-300 font-medium group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: -20 }}
+                className="px-3 py-1.5 text-xs text-zinc-400 hover:text-white transition-colors duration-200 font-medium rounded-md hover:bg-white/5"
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
+                transition={{ duration: 0.4, delay: 0.08 * index }}
               >
-                <span className="relative z-10">{item.name}</span>
-                <motion.div
-                  className="absolute inset-0 bg-white/20 rounded-lg -z-10"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileHover={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
+                {item.name}
               </motion.button>
             ))}
           </div>
@@ -91,7 +66,7 @@ export const SimpleNavigation = () => {
 
         {/* Mobile Menu Button */}
         <motion.button
-          className="md:hidden relative z-20 p-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20"
+          className="md:hidden relative z-20 p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
           onClick={() => setIsOpen(!isOpen)}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -121,18 +96,7 @@ export const SimpleNavigation = () => {
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.3, type: "spring" }}
             >
-              <div className="flex flex-col gap-4 relative z-10">
-                {/* Mobile Available Badge */}
-                <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full backdrop-blur-sm mb-2"
-                >
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                  <span className="text-green-400 text-sm font-medium">Available for opportunities</span>
-                </motion.div>
-                
+              <div className="flex flex-col gap-1 relative z-10">
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.href}
@@ -140,12 +104,10 @@ export const SimpleNavigation = () => {
                       smoothScrollTo(item.href.slice(1));
                       setIsOpen(false);
                     }}
-                    className="text-left text-white hover:text-gray-300 transition-colors font-medium p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10"
-                    initial={{ opacity: 0, x: -20 }}
+                    className="text-left text-zinc-400 hover:text-white transition-colors text-sm p-2.5 rounded-lg hover:bg-white/5"
+                    initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 * index }}
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.2, delay: 0.05 * index }}
                   >
                     {item.name}
                   </motion.button>

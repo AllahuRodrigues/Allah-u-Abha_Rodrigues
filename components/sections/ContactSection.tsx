@@ -2,458 +2,212 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, Check, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, MapPin, Send, Check, AlertCircle, Loader2, Github, Linkedin } from 'lucide-react';
 import { profile } from '@/lib/constants';
 
-// ShadCN-inspired UI components
-const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl ${className}`}>
-    {children}
-  </div>
-);
-
-const Input = ({ className = "", ...props }: React.InputHTMLAttributes<HTMLInputElement>) => (
-  <input
-    className={`flex h-12 w-full rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all duration-200 ${className}`}
-    {...props}
-  />
-);
-
-const Textarea = ({ className = "", ...props }: React.TextareaHTMLAttributes<HTMLTextAreaElement>) => (
-  <textarea
-    className={`flex min-h-[120px] w-full rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all duration-200 resize-none ${className}`}
-    {...props}
-  />
-);
-
-const Button = ({ 
-  children, 
-  className = "", 
-  variant = "default",
-  disabled = false,
-  ...props 
-}: {
-  children: React.ReactNode;
-  className?: string;
-  variant?: "default" | "outline";
-  disabled?: boolean;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  const baseClasses = "inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed";
-  
-  const variants = {
-    default: "bg-white text-black hover:bg-gray-200 shadow-lg hover:shadow-xl hover:shadow-white/25",
-    outline: "border border-white/20 text-white hover:bg-white/10 backdrop-blur-sm"
-  };
-
-  return (
-    <button
-      className={`${baseClasses} ${variants[variant]} ${className}`}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
-
-const Alert = ({ 
-  children, 
-  variant = "default" 
-}: { 
-  children: React.ReactNode; 
-  variant?: "default" | "success" | "error" 
-}) => {
-  const variants = {
-    default: "bg-blue-500/10 border-blue-500/20 text-blue-400",
-    success: "bg-green-500/10 border-green-500/20 text-green-400",
-    error: "bg-red-500/10 border-red-500/20 text-red-400"
-  };
-
-  const icons = {
-    default: AlertCircle,
-    success: Check,
-    error: AlertCircle
-  };
-
-  const Icon = icons[variant];
-
-  return (
-    <div className={`flex items-start gap-3 p-4 rounded-lg border backdrop-blur-sm ${variants[variant]}`}>
-      <Icon className="w-5 h-5 mt-0.5 shrink-0" />
-      <div className="text-sm">{children}</div>
-    </div>
-  );
+const item = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [responseMessage, setResponseMessage] = useState('');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-
     try {
-      const response = await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
-      const result = await response.json();
-
+      const result = await res.json();
       if (result.success) {
         setStatus('success');
         setResponseMessage(result.message);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         setStatus('error');
-        setResponseMessage(result.error || 'Something went wrong. Please try again.');
+        setResponseMessage(result.error || 'Something went wrong.');
       }
     } catch {
       setStatus('error');
-      setResponseMessage('Network error. Please check your connection and try again.');
+      setResponseMessage('Network error. Please try again.');
     }
-
-    // Reset status after 5 seconds
-    setTimeout(() => {
-      setStatus('idle');
-      setResponseMessage('');
-    }, 5000);
+    setTimeout(() => { setStatus('idle'); setResponseMessage(''); }, 5000);
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: profile.email,
-      href: profile.links.email
-    },
-    {
-      icon: MapPin,
-      label: 'Location',
-      value: profile.location,
-      href: null
-    }
-  ];
-
-  const workDetails = [
-    {
-      label: 'Work Authorization',
-      items: [
-        'Portugal (EU Area)',
-        'United States'
-      ]
-    },
-    {
-      label: 'Languages',
-      items: profile.languages
-    }
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
+  const inputCls = 'w-full bg-white/[0.03] border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-white/25 focus:bg-white/[0.05] transition-all duration-200';
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-gradient-to-b from-background via-black to-black">
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5" />
-      
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
+    <section id="contact" className="py-16 section-divider">
+      <div className="container max-w-3xl mx-auto">
         <motion.div
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-white/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-3/4 right-1/4 w-24 h-24 bg-white/5 rounded-full blur-2xl"
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
-      </div>
-      
-      <div className="container relative z-10">
-        <motion.div
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-6xl mx-auto"
+          transition={{ staggerChildren: 0.1 }}
         >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6"
-            >
-              <Mail className="w-4 h-4 text-white" />
-              <span className="text-white text-sm font-medium">Get In Touch</span>
-            </motion.div>
-            
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Let&apos;s Build Something
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-300">
-                Amazing Together
-              </span>
-            </h2>
-            
-            <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-              Ready to discuss your next project, explore collaboration opportunities, or just say hello? 
-              I would love to hear from you and explore how we can create something exceptional.
+          {/* Header */}
+          <motion.div variants={item} className="mb-10">
+            <p className="text-xs text-zinc-600 uppercase tracking-widest mb-2 font-mono">/contact</p>
+            <h2 className="text-3xl font-bold text-white">Get In Touch</h2>
+            <p className="text-zinc-500 mt-1 text-sm">
+              Open to collaborations, opportunities, and interesting conversations.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Contact Form */}
-            <motion.div variants={itemVariants}>
-              <Card className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
-                
-                {status !== 'idle' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-6"
-                  >
-                    <Alert variant={status === 'success' ? 'success' : 'error'}>
-                      {responseMessage}
-                    </Alert>
-                  </motion.div>
-                )}
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* Form */}
+            <motion.div variants={item} className="lg:col-span-3">
+              {status !== 'idle' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`flex items-start gap-2 p-3 rounded-lg border mb-4 text-sm ${
+                    status === 'success'
+                      ? 'bg-green-500/5 border-green-500/20 text-green-400'
+                      : 'bg-red-500/5 border-red-500/20 text-red-400'
+                  }`}
+                >
+                  {status === 'success' ? <Check className="w-4 h-4 mt-0.5 shrink-0" /> : <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />}
+                  {responseMessage}
+                </motion.div>
+              )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Your Name
-                      </label>
-                      <Input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="John Doe"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Email Address
-                      </label>
-                      <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="john@example.com"
-                        required
-                      />
-                    </div>
-                  </div>
-                  
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div className="grid sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Subject
-                    </label>
-                    <Input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      placeholder="Project Discussion"
-                      required
-                    />
+                    <label className="block text-xs text-zinc-500 mb-1.5">Name</label>
+                    <input name="name" value={formData.name} onChange={handleChange} placeholder="Your name" required className={inputCls} />
                   </div>
-                  
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Message
-                    </label>
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Tell me about your project, ideas, or how we can work together..."
-                      required
-                    />
+                    <label className="block text-xs text-zinc-500 mb-1.5">Email</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="you@example.com" required className={inputCls} />
                   </div>
-                  
-                  <Button
-                    type="submit"
-                    disabled={status === 'loading'}
-                    className="w-full"
-                  >
-                    {status === 'loading' ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Sending Message...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </Card>
+                </div>
+                <div>
+                  <label className="block text-xs text-zinc-500 mb-1.5">Subject</label>
+                  <input name="subject" value={formData.subject} onChange={handleChange} placeholder="What&apos;s this about?" required className={inputCls} />
+                </div>
+                <div>
+                  <label className="block text-xs text-zinc-500 mb-1.5">Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Your message..."
+                    required
+                    rows={5}
+                    className={`${inputCls} resize-none`}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-black text-sm font-semibold rounded-lg hover:bg-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                >
+                  {status === 'loading' ? (
+                    <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>
+                  ) : (
+                    <><Send className="w-4 h-4" /> Send Message</>
+                  )}
+                </button>
+              </form>
             </motion.div>
 
-            {/* Contact Information */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <Card className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-                
-                <div className="space-y-6">
-                  {contactInfo.map((item, index) => {
-                    const IconComponent = item.icon;
-                    const content = (
-                      <div className="flex items-start gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-white/10">
-                        <div className="p-2 bg-white/20 rounded-lg shrink-0">
-                          <IconComponent className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <h4 className="text-white font-medium mb-1">{item.label}</h4>
-                          <p className="text-gray-300 text-sm">{item.value}</p>
-                        </div>
+            {/* Info */}
+            <motion.div variants={item} className="lg:col-span-2 space-y-4">
+              {/* Contact */}
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/8 space-y-3">
+                <p className="text-xs text-zinc-600 uppercase tracking-widest font-mono">Contact</p>
+                {[
+                  { icon: Mail, label: 'Email', value: profile.email, href: profile.links.email },
+                  { icon: MapPin, label: 'Location', value: profile.location, href: null },
+                ].map(({ icon: Icon, label, value, href }) => {
+                  const content = (
+                    <div className="flex items-start gap-3 group">
+                      <div className="p-1.5 rounded-md bg-white/5 border border-white/8">
+                        <Icon className="w-3.5 h-3.5 text-zinc-500" />
                       </div>
-                    );
-
-                    return item.href ? (
-                      <motion.a
-                        key={index}
-                        href={item.href}
-                        className="block"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        {content}
-                      </motion.a>
-                    ) : (
-                      <motion.div
-                        key={index}
-                        whileHover={{ scale: 1.02 }}
-                      >
-                        {content}
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </Card>
-
-              {/* Quick Response Note */}
-              <Card className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-green-500/20 rounded-lg shrink-0">
-                    <Check className="w-5 h-5 text-green-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium mb-2">Quick Response</h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                      I typically respond to all inquiries within 24-48 hours. For urgent matters, 
-                      feel free to reach out directly via email.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Work Authorization & Languages */}
-              <Card className="p-6">
-                <h4 className="text-white font-medium mb-4">Work Authorization & Languages</h4>
-                <div className="space-y-4">
-                  {workDetails.map((detail, index) => (
-                    <div key={index}>
-                      <h5 className="text-gray-300 text-sm font-medium mb-2">{detail.label}</h5>
-                      <div className="space-y-1">
-                        {detail.items.map((item, itemIndex) => (
-                          <div key={itemIndex} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-white rounded-full" />
-                            <span className="text-gray-400 text-sm">{item}</span>
-                          </div>
-                        ))}
+                      <div>
+                        <p className="text-xs text-zinc-600">{label}</p>
+                        <p className="text-sm text-zinc-300 group-hover:text-white transition-colors">{value}</p>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </Card>
+                  );
+                  return href ? (
+                    <a key={label} href={href} className="block">{content}</a>
+                  ) : (
+                    <div key={label}>{content}</div>
+                  );
+                })}
+              </div>
 
-              {/* Social Links */}
-              <Card className="p-6">
-                <h4 className="text-white font-medium mb-4">Connect Elsewhere</h4>
-                <div className="flex gap-3">
+              {/* Work auth */}
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/8">
+                <p className="text-xs text-zinc-600 uppercase tracking-widest font-mono mb-3">Authorization</p>
+                <div className="space-y-2">
+                  <div>
+                    <p className="text-xs text-zinc-600 mb-1">Work Authorization</p>
+                    <div className="flex gap-2">
+                      {['Portugal (EU)', 'United States'].map(auth => (
+                        <span key={auth} className="text-xs px-2 py-0.5 rounded-md bg-white/5 text-zinc-400 border border-white/8">{auth}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-600 mb-1">Languages</p>
+                    <div className="flex gap-2">
+                      {profile.languages.map(lang => (
+                        <span key={lang} className="text-xs px-2 py-0.5 rounded-md bg-white/5 text-zinc-400 border border-white/8">{lang}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social */}
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/8">
+                <p className="text-xs text-zinc-600 uppercase tracking-widest font-mono mb-3">Connect</p>
+                <div className="flex gap-2">
                   {[
-                    { name: 'LinkedIn', href: profile.links.linkedIn },
-                    { name: 'GitHub', href: profile.links.github },
-                    { name: 'Portfolio', href: profile.links.portfolio }
-                  ].map((link, index) => (
-                    <motion.a
-                      key={index}
-                      href={link.href}
+                    { icon: Github, href: profile.links.github, label: 'GitHub' },
+                    { icon: Linkedin, href: profile.links.linkedIn, label: 'LinkedIn' },
+                    { icon: Mail, href: profile.links.email, label: 'Email' },
+                  ].map(({ icon: Icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      title={label}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/5 border border-white/8 text-zinc-500 hover:text-white hover:bg-white/10 transition-all text-xs"
                     >
-                      {link.name}
-                    </motion.a>
+                      <Icon className="w-3.5 h-3.5" />
+                      {label}
+                    </a>
                   ))}
                 </div>
-              </Card>
+              </div>
             </motion.div>
           </div>
+
+          {/* Footer note */}
+          <motion.div variants={item} className="mt-12 pt-8 border-t border-white/5 text-center">
+            <p className="text-xs text-zinc-700 font-mono">
+              allah-u-abha.rodrigues@yale.edu · New Haven, CT
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </section>
   );
-} 
+}
