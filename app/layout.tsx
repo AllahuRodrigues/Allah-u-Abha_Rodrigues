@@ -7,54 +7,51 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://allahurodrigues.com"),
   title: {
-    default: "Allah‑u‑Abha Rodrigues | ML Engineer • SWE",
+    default: "Allah‑u‑Abha Rodrigues | Founder, Regilon • Software Engineer",
     template: "%s | Allah‑u‑Abha Rodrigues",
   },
   description:
-    "Portfolio of Allah‑u‑Abha Rodrigues — Machine Learning Engineer, Software Developer & Quantitative Analyst. Building reliable systems that turn data into value.",
+    "Allah‑u‑Abha Rodrigues — Founder of Regilon (property-tax intelligence for CRE), senior at Yale studying CS & Statistics. Building at the intersection of machine learning, document intelligence, and real estate data.",
   keywords: [
     "Allah-u-Abha Rodrigues",
+    "Regilon",
+    "Property Tax Intelligence",
+    "Commercial Real Estate",
+    "Tenure",
+    "PropTech",
     "Machine Learning Engineer",
     "Software Engineer",
     "Full‑Stack Developer",
-    "Quantitative Analyst",
-    "AI Research",
-    "Data Science",
-    "Tech Portfolio",
     "Yale University",
-    "Porto",
-    "Portugal",
-    "Yale University Computer Science",
-    "Lisbon",
-    "New York",
+    "Computer Science",
+    "Statistics",
+    "New Haven",
     "San Francisco",
-    "California",
+    "Yale Hacker House",
   ],
   authors: { name: "Allah‑u‑Abha Rodrigues", url: "https://allahurodrigues.com" },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://allahurodrigues.com",
-    siteName: "Allah‑u‑Abha Rodrigues Portfolio",
-    title: "Allah‑u‑Abha Rodrigues | ML Engineer • SWE • Quant",
+    siteName: "Allah‑u‑Abha Rodrigues",
+    title: "Allah‑u‑Abha Rodrigues | Founder, Regilon",
     description:
-      "Turning data into actionable insights and powerful software.",
+      "Founder of Regilon — property-tax intelligence for commercial real estate portfolios. Senior at Yale, CS & Statistics.",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Allah‑u‑Abha Rodrigues Portfolio",
+        alt: "Allah‑u‑Abha Rodrigues — Founder, Regilon",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@yourTwitter",
-    creator: "@yourTwitter",
-    title: "Allah‑u‑Abha Rodrigues | ML Engineer • SWE • Quant",
+    title: "Allah‑u‑Abha Rodrigues | Founder, Regilon",
     description:
-      "Turning data into actionable insights and powerful software.",
+      "Founder of Regilon — property-tax intelligence for commercial real estate portfolios. Senior at Yale, CS & Statistics.",
     images: ["/images/og-image.jpg"],
   },
   robots: {
@@ -71,10 +68,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-    other: { bing: "your-bing-code" },
-  },
   category: "technology",
   other: {
     "application/ld+json": JSON.stringify({
@@ -82,31 +75,30 @@ export const metadata: Metadata = {
       "@type": "Person",
       name: "Allah‑u‑Abha Rodrigues",
       jobTitle: [
+        "Founder",
+        "Software Engineer",
         "Machine Learning Engineer",
-        "Software Developer",
-        "Quantitative Analyst",
       ],
+      worksFor: {
+        "@type": "Organization",
+        name: "Regilon",
+        url: "https://regilon.com",
+      },
       alumniOf: {
         "@type": "CollegeOrUniversity",
         name: "Yale University",
       },
       sameAs: [
-        "https://www.linkedin.com/in/allahurodrigues",
-        "https://github.com/allahurodrigues",
+        "https://www.linkedin.com/in/allahu-rodrigues",
+        "https://github.com/AllahuRodrigues",
       ],
       url: "https://allahurodrigues.com",
-      address: [
-        {
-          "@type": "PostalAddress",
-          addressCountry: "PT",
-          addressRegion: "Lisbon",
-        },
-        {
-          "@type": "PostalAddress",
-          addressCountry: "US",
-          addressRegion: "California",
-        },
-      ],
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "US",
+        addressRegion: "Connecticut",
+        addressLocality: "New Haven",
+      },
     }),
   },
 };

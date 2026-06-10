@@ -249,8 +249,8 @@ export function SimpleHero() {
 
   const techStack = [
     { icon: Code, label: 'Full-Stack' },
-    { icon: Cpu, label: 'Machine Learning' },
-    { icon: Zap, label: 'DevOps' }
+    { icon: Cpu, label: 'ML & Data' },
+    { icon: Zap, label: 'PropTech' }
   ];
 
   return (
@@ -373,7 +373,7 @@ export function SimpleHero() {
             <Typewriter
               texts={typewriterTexts}
               delay={1000}
-              className="font-medium bg-gradient-to-r from-gray-300 via-white to-gray-400 bg-clip-text text-transparent"
+              className="font-medium text-accent-400"
             />
           </motion.div>
         </motion.div>
@@ -386,11 +386,10 @@ export function SimpleHero() {
           className="max-w-4xl mx-auto"
         >
           <p className="text-xl md:text-2xl text-neutral-400 leading-relaxed mb-6">
-            Building the future through innovative software engineering, machine learning research, 
-            and scalable DevOps solutions.
+            Founder of Regilon — property-tax intelligence for commercial real estate portfolios.
           </p>
           <p className="text-lg text-neutral-500 leading-relaxed">
-            Passionate about creating technology that makes a difference and mentoring the next generation of developers.
+            Senior at Yale, CS & Statistics. Building at the intersection of machine learning, document intelligence, and real estate data.
           </p>
         </motion.div>
 

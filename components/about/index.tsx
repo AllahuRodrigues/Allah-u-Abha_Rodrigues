@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code, Heart, Award, Target, Users, Zap } from 'lucide-react';
+import { Code, Building2, Award, Target, Users, Zap } from 'lucide-react';
 import { profile } from '@/lib/constants';
 
 export const AboutSection = () => {
@@ -22,34 +22,34 @@ export const AboutSection = () => {
 
   const highlights = [
     {
+      icon: Building2,
+      title: "Founder, Regilon",
+      description: "Building property-tax intelligence for CRE portfolios — ML, statistical modeling, and document intelligence to detect overassessments and surface appeal evidence"
+    },
+    {
       icon: Code,
-      title: "Technical Excellence",
-      description: "Proficient in Python, TypeScript, R, and modern frameworks like React and PyTorch"
+      title: "Full-Stack Engineer",
+      description: "Python, TypeScript, Next.js, React, Node.js — production systems from geospatial APIs to ML pipelines and real-time dashboards"
     },
     {
       icon: Award,
       title: "Academic Achievement",
-      description: "3.8 GPA at Yale University studying Computer Science & Statistics"
-    },
-    {
-      icon: Users,
-      title: "Leadership & Community",
-      description: "Secretary of Zeta Psi Fraternity and active mentor for young developers"
+      description: "3.72 GPA at Yale University studying Computer Science & Statistics, with a certificate in Data Science"
     },
     {
       icon: Target,
-      title: "Financial Innovation",
-      description: "Focused on applying ML and data science to finance and investment strategies"
+      title: "PropTech Builder",
+      description: "Built Tenure (B2C lease intelligence) then pivoted to Regilon (B2B property-tax) — same data stack, larger recurring problem"
     },
     {
       icon: Zap,
-      title: "Performance Optimization",
-      description: "Reduced deployment cycles from 2 days to 45 minutes at HapSTR"
+      title: "ML & Data Engineering",
+      description: "scikit-learn, PyTorch, XGBoost — from salary predictors to demand forecasting engines to overassessment scoring models"
     },
     {
-      icon: Heart,
-      title: "Social Impact",
-      description: "Volunteer work helping displaced families through technology solutions"
+      icon: Users,
+      title: "Community & Mentorship",
+      description: "Yale Computer Society (Yalies.io), mentor at Curious Cardinals, Yale Hacker House 2026 cohort"
     }
   ];
 

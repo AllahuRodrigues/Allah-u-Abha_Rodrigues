@@ -50,10 +50,10 @@ export const ExperienceSection = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Professional Experience
+              Experience
             </h2>
             <p className="text-xl text-neutral-300">
-              Building scalable solutions and mentoring the next generation
+              From UNDP GRP Fellow to founding Regilon and engineering at HapSTR, Unlock Labs, and Yale
             </p>
           </motion.div>
 
@@ -74,7 +74,7 @@ export const ExperienceSection = () => {
                   {/* Company Header */}
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-accent-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">
+                      <div className="w-12 h-12 bg-accent-500 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0">
                         {exp.company.charAt(0)}
                       </div>
                       <div>

@@ -9,7 +9,7 @@ export const ProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories = ['All', 'Machine Learning', 'DevOps', 'Social Impact', 'Web Development'];
+  const categories = ['All', 'PropTech', 'Machine Learning', 'Social Impact', 'Web Development'];
   
   const filteredProjects = selectedCategory === 'All' 
     ? profile.projects 
@@ -94,7 +94,7 @@ export const ProjectsSection = () => {
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Projects That Make an
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 via-purple-400 to-blue-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-accent-600">
                 Impact
               </span>
             </h2>
@@ -146,13 +146,13 @@ export const ProjectsSection = () => {
                   <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 hover:border-accent-500/30 transition-all duration-500 group-hover:scale-[1.02]">
                     {/* Project Image/Preview */}
                     <div className="relative h-64 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-accent-500/20 via-purple-500/20 to-blue-500/20" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent-500/15 via-accent-600/10 to-accent-700/5" />
                       
                       {/* Placeholder for project images */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-6xl opacity-20">
+                          {project.category === 'PropTech' && '🏢'}
                           {project.category === 'Machine Learning' && '🤖'}
-                          {project.category === 'DevOps' && '⚙️'}
                           {project.category === 'Social Impact' && '🌍'}
                           {project.category === 'Web Development' && '🚀'}
                         </div>
@@ -207,7 +207,7 @@ export const ProjectsSection = () => {
                       {/* Featured Badge */}
                       {project.featured && (
                         <div className="absolute top-4 right-4">
-                          <span className="px-3 py-1 text-xs font-medium bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30">
+                          <span className="px-3 py-1 text-xs font-medium bg-accent-500/20 text-accent-300 rounded-full border border-accent-500/30">
                             Featured
                           </span>
                         </div>
@@ -313,30 +313,6 @@ export const ProjectsSection = () => {
             </AnimatePresence>
           </motion.div>
 
-          {/* Call to Action */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center mt-16"
-          >
-            <div className="bg-gradient-to-br from-accent-500/10 to-purple-500/10 backdrop-blur-sm border border-accent-500/20 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Interested in collaborating?
-              </h3>
-              <p className="text-gray-300 mb-6">
-                Let us discuss your next project and explore how we can bring your vision to life with innovative 
-                technology solutions.
-              </p>
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-500 to-purple-500 rounded-full text-white font-semibold hover:shadow-2xl hover:shadow-accent-500/25 transition-all duration-300"
-              >
-                <span>Let&apos;s Work Together</span>
-                <ChevronRight className="w-5 h-5" />
-              </motion.a>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
