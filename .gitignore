@@ -35,3 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env.local
+
+# original art & photo sources (private docs, unoptimized scans) — web copies live in public/art and public/photos
+/private-assets/

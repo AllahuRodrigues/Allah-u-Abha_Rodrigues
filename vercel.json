@@ -4,12 +4,9 @@
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install",
   "outputDirectory": ".next",
-  "regions": ["iad1"],
-  "functions": {
-    "app/**/*.js": {
-      "maxDuration": 30
-    }
-  },
+  "regions": [
+    "iad1"
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -29,4 +26,4 @@
       ]
     }
   ]
-} 
+}
